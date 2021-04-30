@@ -4,7 +4,7 @@ function sleep(ms) {
 }
 
 // const delay = ms => new Promise(res => setTimeout(res, ms));
-
+var path = null;
 
 
 
@@ -74,9 +74,14 @@ async function traverseBFS(rootArray) {
             curr.fillExploringNodes();
         await new Promise(resolve => setTimeout(resolve, 0));
         if (curr.endNode) {
-            var temp = curr;
+            path = curr;
+            while (path.prev != null) {
+                path.prev.fill = "yellow";
+                path.prev.fillNode();
+                path = path.prev;
+            }
+            path = null;
             running = false;
-            return temp;
         }
         // await sleepTime = 100;
         // await sleepRequested = true;
