@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+    <script src="sketch.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="grid.js"></script>
+    <script src="mouse.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <style>
+        #canvasdiv {}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="canvasdiv">
+
+        </div>
+        <select id="algorithm">
+            <option value ="bfs">Bredth First Search</option>
+            <option value ="dfs">Depth First Search</option>
+        </select>
+        <button onclick="run()">Visualize</button>
+        <button onclick="clearAll()">Clear</button>
+    </div>
+</body>
+
+</html>
