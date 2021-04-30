@@ -4,11 +4,10 @@ const BOARD_WIDTH = 30;
 const GRID_SIZE = 20;
 var x_last_frame;
 var y_last_frame;
-var sleepRequested = false;
-var sleepTime;
 var running = false;
 var start;
 var prev;
+var path1;
 
 function setup() {
     canvas = createCanvas(BOARD_HEIGHT * GRID_SIZE + 2, BOARD_WIDTH * GRID_SIZE + 2);
@@ -50,8 +49,8 @@ function run() {
             result = traverseBFS(start);
         else if (algo === "dfs")
             result = traverseDFS(start);
-        console.log(result);
-        console.log(result.result);
+        console.log("result is " + result);
+        console.log("result is " + result.result);
         while (result.prev != null) {
             result.fill = "yellow";
             result.fillNode();
@@ -80,11 +79,7 @@ function clearAll() {
 }
 
 function draw() {
-    if (sleepRequested) {
-        newSleep(sleepTime);
-        sleepRequested = false;
-        console.log("Testing to see if it went to sleep");
-    }
+
 }
 
 function clearExplored() {

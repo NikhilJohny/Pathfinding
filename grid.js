@@ -1,3 +1,22 @@
+var isFinished = true;
+
+function testSleep(ms) {
+    if (isFinished) {
+        return new Promise(resolve => setInterval(resolve, ms));
+    } else {
+        console.log('testing to see');
+        return new Promise(resolve => setInterval(resolve, 100));
+    }
+}
+
+function newSleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+        currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+}
+
 function Rect(i, j) {
     this.fill = 'white'
     this.i = i;
@@ -7,7 +26,7 @@ function Rect(i, j) {
     this.bottom;
     this.left;
     this.right;
-    this.previous;
+    this.previous = null;
     this.state = true;
     this.startNode;
     this.endNode;
@@ -18,7 +37,7 @@ function Rect(i, j) {
 
         rectMode(CENTER);
         circle((i + this.i + GRID_SIZE) / 2, (j + this.j + GRID_SIZE) / 2, 10);
-        await new Promise(resolve => setTimeout(resolve, 1));
+        await new Promise(resolve => setTimeout(resolve, 50));
         rectMode(CORNERS)
         rect(this.i, this.j, this.i + GRID_SIZE, this.j + GRID_SIZE);
     }
@@ -87,24 +106,21 @@ function Rect(i, j) {
     }
 
     this.fillExploringNodes = async function() {
-        fill("#33FF99")
+        fill("#00D99F")
         stroke("#34495e")
         rectMode(CENTER);
         circle((i + this.i + GRID_SIZE) / 2, (j + this.j + GRID_SIZE) / 2, 10);
-        await new Promise(resolve => setTimeout(resolve, 50));
+        await new Promise(resolve => setTimeout(resolve, 0));
         fill("#00BEDA");
         stroke("#34495e");
         rectMode(CORNERS);
         rect(this.i, this.j, this.i + GRID_SIZE, this.j + GRID_SIZE);
-        await new Promise(resolve => setTimeout(resolve, 0.001));
-        fill("#00D99F")
-        stroke("#34495e")
-        rectMode(CORNERS);
-        rect(this.i, this.j, this.i + GRID_SIZE, this.j + GRID_SIZE);
-        await new Promise(resolve => setTimeout(resolve, 50));
-        fill("#00BEDA");
+    }
+
+    this.resultPath = async function() {
+        fill(this.fill);
         stroke("#34495e");
-        rectMode(CORNERS);
+        rectMode(CORNERS)
         rect(this.i, this.j, this.i + GRID_SIZE, this.j + GRID_SIZE);
     }
 
