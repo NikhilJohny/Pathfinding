@@ -73,7 +73,7 @@ async function traverseBFS(rootArray) {
         curr.explored = true;
         if (!curr.startNode && !curr.endNode)
             curr.fillExploringNodes();
-        await new Promise(resolve => setTimeout(resolve, 0.0000));
+        await new Promise(resolve => setTimeout(resolve, 0));
         if (curr.endNode) {
             path = curr;
             break;
@@ -119,7 +119,7 @@ async function traverseBFS(rootArray) {
         }
         path = path.previous;
     }
-    newSleep(2000);
+    // newSleep(2000);
     while (tempArray.length) {
         var t = tempArray.shift();
         t.fill = "yellow";
