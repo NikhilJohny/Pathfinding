@@ -18,7 +18,7 @@ function Rect(i, j) {
 
         rectMode(CENTER);
         circle((i + this.i + GRID_SIZE) / 2, (j + this.j + GRID_SIZE) / 2, 10);
-        // await new Promise(resolve => setTimeout(resolve, 1));
+        await new Promise(resolve => setTimeout(resolve, 1));
         rectMode(CORNERS)
         rect(this.i, this.j, this.i + GRID_SIZE, this.j + GRID_SIZE);
     }
