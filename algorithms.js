@@ -119,7 +119,7 @@ async function traverseBFS(rootArray) {
         }
         path = path.previous;
     }
-    // newSleep(2000);
+    newSleep(2000);
     while (tempArray.length) {
         var t = tempArray.shift();
         t.fill = "yellow";
